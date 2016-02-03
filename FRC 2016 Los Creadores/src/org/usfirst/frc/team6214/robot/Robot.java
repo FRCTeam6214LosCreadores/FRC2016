@@ -2,8 +2,10 @@ package org.usfirst.frc.team6214.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.Buttons.*;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Victor;
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 /**
@@ -31,7 +33,7 @@ public class Robot extends IterativeRobot {
 	 * used for any initialization code.
 	 */
 	public void robotInit() {
-		myRobot = new RobotDrive(0,1);
+		myRobot = new RobotDrive(0,1);	//This joystick to read forwards/backwrds and L/R
 		stick = new Joystick(0);
 
 	}
@@ -75,7 +77,7 @@ public class Robot extends IterativeRobot {
 		{
 			SpeedOut = -.2;
 		}
-		//myRobot.arcadeDrive(SpeedOut,-stick.getRawAxis(0));
+		//myRobot.arcadeDrive(SpeedOut,stick.getRawAxis(0));
 		myRobot.arcadeDrive(stick.getRawAxis(1),-stick.getRawAxis(0));
 
 		 System.out.println(stick.getRawAxis(0));	//These were't
@@ -99,4 +101,9 @@ public class Robot extends IterativeRobot {
 	public void testPeriodic() {
 		LiveWindow.run();
 	}
-}
+	public void victormotorcontrol() {
+		//VictorSP (1&2) are the motors being used
+		//VictorSP.motor1
+		
+	}
+} 
