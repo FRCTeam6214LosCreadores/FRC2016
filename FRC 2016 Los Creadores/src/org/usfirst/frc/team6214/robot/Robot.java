@@ -2,10 +2,10 @@ package org.usfirst.frc.team6214.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.Buttons.*;
+//import edu.wpi.first.wpilibj.Buttons.*;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Victor;
-import edu.wpi.first.wpilibj.VictorSP;
+//import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 /**
@@ -104,6 +104,8 @@ public class Robot extends IterativeRobot {
 	public void victormotorcontrol() {
 		//VictorSP (1&2) are the motors being used
 		//VictorSP.motor1
-		
+		//8, 7, 9, 10 are the four designated motor controls
+		//3(Slider) controls the direction
+		//ballspeed = ;
 	}
-} 
+}
