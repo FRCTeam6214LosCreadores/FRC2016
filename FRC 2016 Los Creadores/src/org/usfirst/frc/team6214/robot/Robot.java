@@ -108,4 +108,5 @@ public class Robot extends IterativeRobot {
 		//3(Slider) controls the direction
 		//ballspeed = ;
 	}
-}
+} 
+ 
