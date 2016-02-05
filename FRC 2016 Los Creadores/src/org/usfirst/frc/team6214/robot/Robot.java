@@ -1,6 +1,7 @@
 package org.usfirst.frc.team6214.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
+
 import edu.wpi.first.wpilibj.Joystick;
 //import edu.wpi.first.wpilibj.Buttons.*;
 import edu.wpi.first.wpilibj.RobotDrive;
@@ -27,6 +28,8 @@ public class Robot extends IterativeRobot {
 	double AccelAmt;
 	double DecelAmt;
 	double SpeedOut;
+	double ballmotor1;
+	double ballmotor2;
 	
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -106,7 +109,14 @@ public class Robot extends IterativeRobot {
 		//VictorSP.motor1
 		//8, 7, 9, 10 are the four designated motor controls
 		//3(Slider) controls the direction
-		//ballspeed = ;
+		if(stick.getRawButton(8)) {
+			ballmotor1 = 1;
+		}
+		if(stick.getRawButton(7)){
+			ballmotor1 = 0;
+		}
+		ballmotor2 = 0-ballmotor1;
+		
 	}
 } 
  
