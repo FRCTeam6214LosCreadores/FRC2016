@@ -109,14 +109,16 @@ public class Robot extends IterativeRobot {
 		//VictorSP.motor1
 		//8, 7, 9, 10 are the four designated motor controls
 		//3(Slider) controls the direction
-		ballmotor2 = 0-ballmotor1;
+		motor2 = 0-motor1;
 		if(stick.getRawButton(8)) {
-			ballmotor1 = 1;
+			motor1 = 1;
 		}
 		if(stick.getRawButton(7)){
-			ballmotor1 = 0;
+			motor1 = 0;
+			
 		}
-		
+		System.out.println(Motor1.getSpeed());
+		System.out.println(Motor2.getSpeed());
 		
 	}
 } 
