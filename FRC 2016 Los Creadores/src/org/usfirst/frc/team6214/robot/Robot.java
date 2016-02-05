@@ -110,6 +110,7 @@ public class Robot extends IterativeRobot {
 		//8, 7, 9, 10 are the four designated motor controls
 		//3(Slider) controls the direction
 		motor2 = 0-motor1;
+		
 		if(stick.getRawButton(8)) {
 			motor1 = 1;
 		}
@@ -117,6 +118,7 @@ public class Robot extends IterativeRobot {
 			motor1 = 0;
 			
 		}
+		motor2 = -motor1; //makes the second motor go the opposite direction
 		System.out.println(Motor1.getSpeed());
 		System.out.println(Motor2.getSpeed());
 		
