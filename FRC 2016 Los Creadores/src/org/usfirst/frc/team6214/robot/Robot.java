@@ -1,9 +1,7 @@
 package org.usfirst.frc.team6214.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.PWM;
 import edu.wpi.first.wpilibj.Joystick;
-//import edu.wpi.first.wpilibj.Buttons;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.VictorSP;
@@ -167,5 +165,5 @@ if(stick.getRawButton(8) == true ) {
 		//System.out.println(anglemotor2.getspeed());
 		
 	}
-} 
+}
  
