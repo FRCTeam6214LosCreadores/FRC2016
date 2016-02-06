@@ -1,12 +1,12 @@
 package org.usfirst.frc.team6214.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
-
+import edu.wpi.first.wpilibj.PWM;
 import edu.wpi.first.wpilibj.Joystick;
-//import edu.wpi.first.wpilibj.Buttons.*;
+//import edu.wpi.first.wpilibj.Buttons;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.Victor;
-//import edu.wpi.first.wpilibj.VictorSP;
+import edu.wpi.first.wpilibj.VictorSP;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 /**
@@ -20,16 +20,21 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 public class Robot extends IterativeRobot {
 	RobotDrive myRobot;
 	Joystick stick;
-	int autoLoopCounter;
+	int autoLoopCounter; 
 	Joystick buttons;
-	Victor Motor1;
-	Victor Motor2;
+	Victor motor1;
+	Victor motor2;
 	int channel;
+	
 	double AccelAmt;
 	double DecelAmt;
 	double SpeedOut;
-	double ballmotor1;
-	double ballmotor2;
+	//change these to motor names instead of double when that is figured out
+	VictorSP firemotor1;
+	VictorSP firemotor2;
+	double firingpiston;
+	double anglemotor1;
+	double anglemotor2;
 	
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -38,7 +43,9 @@ public class Robot extends IterativeRobot {
 	public void robotInit() {
 		myRobot = new RobotDrive(0,1);	//This joystick to read forwards/backwrds and L/R
 		stick = new Joystick(0);
-
+		
+		firemotor1 = new VictorSP(2);
+		firemotor2 = new VictorSP(3);
 	}
 
 	/**
@@ -64,6 +71,29 @@ public class Robot extends IterativeRobot {
 	 */
 
 	public void teleopPeriodic() {
+if(stick.getRawButton(8) == true ) {
+			
+			firemotor1.set(1);
+			firemotor2.set(1);
+			System.out.println("Button 8");
+
+		}
+		if(stick.getRawButton(7)){
+			firemotor1.stopMotor();
+			firemotor2.stopMotor();
+			System.out.println("Button 7");
+
+		}
+		if(stick.getRawButton(2)){
+			firemotor1.set(.3);
+			firemotor2.set(-.3);
+			System.out.println("Button 2");
+		} 
+		//motor2 = motor1; useless now
+		//System.out.println(); //outputs to motor1
+		//System.out.println(firemotor2.getSpeed()); //outputs to motor2
+
+		//****************
 		if (stick.getRawAxis(1) > SpeedOut)	//Acceleration Logic
 		{
 			SpeedOut = SpeedOut + AccelAmt;
@@ -86,6 +116,7 @@ public class Robot extends IterativeRobot {
 		 System.out.println(stick.getRawAxis(0));	//These were't
 		 System.out.println(stick.getRawAxis(1));	//	necessary
 		 System.out.println("SpeedOut = " + SpeedOut);
+		//shootermotorcontrol(); 
 	}
 
 	public void teleopInit() {
@@ -104,23 +135,36 @@ public class Robot extends IterativeRobot {
 	public void testPeriodic() {
 		LiveWindow.run();
 	}
-	public void victormotorcontrol() {
+	public void shootermotorcontrol() {
 		//VictorSP (1&2) are the motors being used
 		//VictorSP.motor1
 		//8, 7, 9, 10 are the four designated motor controls
 		//3(Slider) controls the direction
-		motor2 = 0-motor1;
 		
-		if(stick.getRawButton(8)) {
-			motor1 = 1;
+		if(stick.getRawButton(8) == true ) {
+			
+			firemotor1.set(1);
+			firemotor2.set(-1);
+			System.out.println("Button 8");
+
 		}
 		if(stick.getRawButton(7)){
-			motor1 = 0;
-			
+			firemotor1.stopMotor();
+			firemotor2.stopMotor();
+			System.out.println("Button 7");
+
 		}
-		motor2 = -motor1; //makes the second motor go the opposite direction
-		System.out.println(Motor1.getSpeed());
-		System.out.println(Motor2.getSpeed());
+		if(stick.getRawButton(2)){
+			firemotor1.set(-.3);
+			firemotor2.set(.3);
+			System.out.println("Button 2");
+		} 
+		//motor2 = motor1; useless now
+		System.out.println(firemotor1.getSpeed()); //outputs to motor1
+		System.out.println(firemotor2.getSpeed()); //outputs to motor2
+		//System.out.println(firingpiston.getSpeed()); //this won't work until there is a motor name
+		//System.out.println(anglemotor1.getspeed());
+		//System.out.println(anglemotor2.getspeed());
 		
 	}
 } 
