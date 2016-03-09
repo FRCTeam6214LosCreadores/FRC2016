@@ -33,6 +33,8 @@ public class Robot extends IterativeRobot {
 	double firingpiston;
 	double anglemotor1;
 	double anglemotor2;
+	Talon talonmotor;
+	
 	
 	/**
 	 * This function is run when the robot is first started up and should be
@@ -44,6 +46,8 @@ public class Robot extends IterativeRobot {
 		
 		firemotor1 = new VictorSP(2);
 		firemotor2 = new VictorSP(3);
+		talonmotor = new Talon("insert");
+		
 	}
 
 	/**
@@ -115,7 +119,13 @@ if(stick.getRawButton(8) == true ) {
 		 System.out.println(stick.getRawAxis(1));	//	necessary
 		 System.out.println("SpeedOut = " + SpeedOut);
 		//shootermotorcontrol(); 
+		 
+		 if(stick.getRawPOV(1)){
+			 talon.set(0.1);
+			 
+		 }
 	}
+	
 
 	public void teleopInit() {
 		AccelAmt = .05;
